@@ -1,0 +1,69 @@
+{% load staticfiles %}
+
+<html>
+
+<head>
+
+    <title>{% block head_title %}{% endblock %} Easy Returns</title>
+
+    <script src="{% static 'js/jquery.min.js' %} "></script>
+    <script src="{% static 'js/jquery.dropotron.min.js' %} "></script>
+    <script src="{% static 'js/jquery.scrollgress.min.js' %} "></script>
+    <script src="{% static 'js/skel.min.js' %} "></script>
+    <script src="{% static 'js/skel-layers.min.js' %} "></script>
+    <script src="{% static 'js/init.js' %} "></script>
+
+    <link rel="stylesheet" href="{% static 'css/skel.css' %} " />
+    <link rel="stylesheet" href="{% static 'css/style.css' %} " />
+    <link rel="stylesheet" href="{% static 'css/style-wide.css' %} " />
+</head>
+
+<body>
+
+    <!-- Header -->
+        <header id="header" class="skel-layers-fixed">
+            <h1><a href="index.html">Easy Returns</a></h1>
+            <nav id="nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="login.html" class="button">Sign Up / Login</a></li>
+
+                </ul>
+            </nav>
+        </header>
+
+		<!-- Main -->
+        <section id="main" class="container 75%">
+                <h1>
+                   {{ title }}  {{ user }}
+                </h1>
+            <div class="box">
+                {% block content %}
+                        <html>
+                            <body>
+                                <form method="POST" action="#"> {% csrf_token %}
+                                    {{form.as_p}}
+                                    <input type ="submit" value="signup">
+                                </form>
+                            </body>
+                        </html>
+                {% endblock %}
+            </div>
+        </section>
+
+    <!-- Footer -->
+        <footer id="footer">
+            <ul class="icons">
+                <li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+                <li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+                <li><a href="#" class="icon fa-google-plus"><span class="label">Google+</span></a></li>
+            </ul>
+            <ul class="copyright">
+                <li>&copy; Dsignwares. All rights reserved.</li><li>Design: <a href="http://www.dsignwares.in">Dsignwares</a></li>
+            </ul>
+        </footer>
+
+</body>
+</html>
